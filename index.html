@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="hr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Krumpir&amp;Co — Više od običnog krumpira</title>
+<meta name="description" content="Dostava hrane s Krumpir&Co. Naručite hranu izravno na web stranici, bez posrednika.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700;800;900&family=Instrument+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: 'Instrument Sans', sans-serif; color: #24211c; background: #f6efe1; }
+  a { color: #b8371f; text-decoration: none; }
+  a:hover { color: #8f2915; }
+  img { display: block; max-width: 100%; }
+  .wrap { width: 100%; background: #f6efe1; overflow-x: hidden; }
+  header { position: sticky; top: 0; z-index: 50; display: flex; align-items: center; justify-content: space-between; gap: 24px; padding: 14px clamp(20px,5vw,64px); background: #ffce2e; border-bottom: 3px solid #24211c; }
+  header nav { display: flex; align-items: center; gap: 28px; font-family: 'Archivo',sans-serif; font-weight: 700; letter-spacing: .04em; font-size: 14px; text-transform: uppercase; flex-wrap: wrap; }
+  header nav a { color: #24211c; }
+  .btn-red { background: #b8371f; color: #fff; font-family: 'Archivo',sans-serif; font-weight: 800; text-transform: uppercase; letter-spacing: .03em; border-radius: 999px; }
+  .btn-dark { background: #24211c; color: #fff; font-family: 'Archivo',sans-serif; font-weight: 800; text-transform: uppercase; letter-spacing: .03em; border-radius: 999px; }
+  .hero { position: relative; display: grid; place-items: center; text-align: center; min-height: min(84vh,720px); padding: 80px clamp(20px,5vw,64px); background: #ffce2e; overflow: hidden; }
+  .hero img.bg { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+  .hero .ov { position: absolute; inset: 0; background: linear-gradient(180deg, rgba(20,17,12,.15) 0%, rgba(20,17,12,.55) 100%); }
+  .hero .inner { position: relative; max-width: 820px; display: flex; flex-direction: column; align-items: center; gap: 24px; }
+  h1 { font-family: 'Archivo',sans-serif; font-weight: 900; color: #fff; font-size: clamp(40px,7vw,80px); line-height: 1.02; letter-spacing: -.02em; text-wrap: balance; text-shadow: 0 2px 24px rgba(0,0,0,.35); }
+  h2 { font-family: 'Archivo',sans-serif; font-weight: 900; text-transform: uppercase; font-size: clamp(28px,4vw,44px); letter-spacing: -.01em; }
+  section p { font-size: 18px; line-height: 1.65; }
+  strong { font-family: 'Archivo',sans-serif; font-weight: 800; }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header>
+    <a href="/" style="display:flex; align-items:center; gap:12px;">
+      <img src="images/img1.png" alt="Krumpir&Co logo" style="height:56px; width:auto;">
+    </a>
+    <nav>
+      <a href="/">Početak</a>
+      <a href="https://www.krumpirco.com/restauracje">Meni</a>
+      <a href="https://www.krumpirco.com/informacje/o-nama">Tko smo mi?</a>
+      <a href="https://www.krumpirco.com/opinie">Recenzije</a>
+      <a href="https://www.krumpirco.com/kontakt">Kontakt</a>
+      <a class="btn-red" href="https://www.krumpirco.com/restauracje" style="color:#fff; padding:10px 20px;">Naruči online</a>
+    </nav>
+  </header>
+
+  <section class="hero">
+    <img class="bg" src="images/img2.jpg" alt="Različita jela od krumpira na tanjurima, s mesom, umakom i povrćem, na žutoj podlozi.">
+    <div class="ov"></div>
+    <div class="inner">
+      <h1>Više od običnog krumpira.</h1>
+      <p style="color:#fff; font-size:clamp(17px,2.2vw,22px); max-width:560px; text-shadow:0 1px 12px rgba(0,0,0,.4);">Probajte savršeno pečene domaće krumpire punjene vrhunskim sastojcima.</p>
+      <a class="btn-red" href="https://www.krumpirco.com/restauracje" style="color:#fff; font-size:18px; padding:16px 40px; box-shadow:0 8px 24px rgba(0,0,0,.25);">Naruči odmah</a>
+    </div>
+  </section>
+
+  <section style="max-width:1200px; margin:0 auto; padding:clamp(48px,7vw,88px) clamp(20px,5vw,64px);">
+    <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(260px,1fr)); gap:20px;">
+      <img src="images/img3.jpg" alt="Pečeni krumpir s mesom, umakom i začinskim biljem, posluženi u plavoj zdjeli na ružičastom stolu." style="width:100%; height:100%; object-fit:cover; border-radius:18px; grid-row:span 2;">
+      <img src="images/img4.jpg" alt="Zapečeni krumpir s mesom, umakom i prženim lukom, posluženo u plavoj zdjeli." style="width:100%; height:100%; object-fit:cover; border-radius:18px;">
+      <img src="images/img5.jpg" alt="Zapečeni krumpir s mljevenim mesom, umakom i crvenim čilijem, posluženo na plavoj zdjeli." style="width:100%; height:100%; object-fit:cover; border-radius:18px;">
+    </div>
+  </section>
+
+  <section style="max-width:900px; margin:0 auto; padding:0 clamp(20px,5vw,64px) clamp(48px,7vw,88px); display:flex; flex-direction:column; gap:22px;">
+    <h2 style="color:#b8371f;">Što su to punjeni krumpiri?</h2>
+    <p>Punjeni krumpiri (eng. Spuds) popularan koncept ulične hrane u Engleskoj gdje se krumpiri peku cijeli u kori i onda pune raznim nadjevima i dodacima. Svoje korijene vuče i iz Turske gdje se prodaje kao “kumpir”. Zbog svoje jednostavnosti, brzine pripreme i hranjivosti postao je popularan i kod nas u Hrvatskoj.</p>
+    <p>U KRUMPIR&Co mi smo tome pristupili ozbiljno. Za savršeni punjeni krumpir trebaju vrhunski sastojci. I tu kod nema pregovora. Kod nas je temelj:</p>
+    <div style="display:grid; gap:14px;">
+      <p style="line-height:1.6;"><strong>Međimurski krumpir</strong> — pažljivo odabran da ostane mekan i sočan nakon pečenja, a izvana dobije koricu.</p>
+      <p style="line-height:1.6;"><strong>Pravi maslac</strong> — ne margarin. Ne mješavine. Pravi maslac. Topi se u vrućem krumpiru i ulazi u svaku poru. Daje dubinu okusa, slatkoću i kremoznost.</p>
+      <p style="line-height:1.6;"><strong>Mozzarella &amp; Cheddar miks</strong> — Cheddar zbog karaktera i blage pikantnosti. Mozzarella zbog savršene topljivosti. Zajedno daju idealan spoj koji se topi pod vrućim nadjevima.</p>
+    </div>
+    <p>To je naša baza. A svaki nadjev koji dolazi na vrh biramo s istom pažnjom. U ponudi imamo 5 nadjeva: Chilli con carne, Domaći grah, Pulled Chicken, Beef i Pork, a radimo i na novim okusima. Dobrodošli u KRUMPIR&Co.</p>
+    <div><a class="btn-red" href="https://www.krumpirco.com/restauracje" style="display:inline-block; color:#fff; padding:14px 32px;">Naručite online</a></div>
+  </section>
+
+  <section style="background:#ffce2e; border-top:3px solid #24211c; border-bottom:3px solid #24211c;">
+    <div style="max-width:1200px; margin:0 auto; padding:clamp(48px,7vw,88px) clamp(20px,5vw,64px); display:grid; grid-template-columns:repeat(auto-fit,minmax(300px,1fr)); gap:clamp(32px,5vw,64px); align-items:center;">
+      <img src="images/img6.jpg" alt="Jelo u zdjeli s prelivom uz figuricu na prozoru." style="width:100%; border-radius:18px; border:3px solid #24211c;">
+      <div style="display:flex; flex-direction:column; gap:18px;">
+        <span style="font-family:'Archivo',sans-serif; font-weight:800; text-transform:uppercase; letter-spacing:.15em; font-size:14px; color:#b8371f;">Krumpir&amp;Co</span>
+        <h2>Naručite online</h2>
+        <p>Jednostavno odaberite svoju omiljenu kombinaciju, dodajte je u košaricu, a mi ćemo se pobrinuti za ostalo. Online naručivanje omogućuje vam da uživate u našim punjenim krumpirima kod kuće, na poslu ili gdje god želite nešto zaista zasitno i ukusno. Svaku narudžbu pripremamo svježu kako biste mogli uživati u maksimalnoj kvaliteti i punom okusu svakog jela.</p>
+        <div><a class="btn-dark" href="https://www.krumpirco.com/restauracje" style="display:inline-block; color:#fff; padding:14px 32px;">Naručite odmah</a></div>
+      </div>
+    </div>
+  </section>
+
+  <section style="max-width:1100px; margin:0 auto; padding:clamp(48px,7vw,88px) clamp(20px,5vw,64px); display:flex; flex-direction:column; gap:28px;">
+    <div style="max-width:760px; display:flex; flex-direction:column; gap:16px;">
+      <h2 style="color:#b8371f;">Tu smo za vas</h2>
+      <p>Ako imate bilo kakvih pitanja o našoj ponudi, naručivanju, dostavi ili sastojcima, slobodno nas kontaktirajte. Rado ćemo vam pomoći, savjetovati vas o izboru i odgovoriti na sve što vas zanima. Krumpir&Co, ne temeljimo se samo na kvalitetnoj hrani, već i na prijateljskoj komunikaciji i zadovoljstvu naših kupaca. Tu smo za vas kad god vam zatrebamo.</p>
+    </div>
+    <iframe title="Karta — Krumpir&Co" src="https://www.google.com/maps/embed/v1/place?key=AIzaSyBZEvwcgAr3C0vAq75h5GN06LeuNx_bmmU&q=Krumpir%26Co%2C+Krapinska+ul.+7%2C+10000%2C+Zagreb%2C+Chorv%C3%A1tsko" style="width:100%; height:400px; border:3px solid #24211c; border-radius:18px;" loading="lazy"></iframe>
+  </section>
+
+  <footer style="background:#24211c; color:#f6efe1;">
+    <div style="max-width:1200px; margin:0 auto; padding:clamp(40px,6vw,72px) clamp(20px,5vw,64px); display:grid; grid-template-columns:repeat(auto-fit,minmax(240px,1fr)); gap:40px;">
+      <div style="display:flex; flex-direction:column; gap:16px;">
+        <img src="images/img7.png" alt="Krumpir&Co logo" style="height:72px; width:auto; background:#ffce2e; padding:8px; border-radius:12px;">
+        <div style="line-height:1.7; font-size:15px; color:#d9d2c4;">
+          Krapinska 7, 10000 Zagreb<br>
+          Telefon: <a href="tel:+385955368390" style="color:#ffce2e;">+385 95 536 8390</a><br>
+          E-mail: <a href="mailto:krumpirco@gmail.com" style="color:#ffce2e;">krumpirco@gmail.com</a><br>
+          <a href="https://www.krumpirco.com/kontakt" style="color:#ffce2e;">Kako doći?</a>
+        </div>
+      </div>
+      <div style="display:flex; flex-direction:column; gap:12px;">
+        <h3 style="font-family:'Archivo',sans-serif; font-weight:800; text-transform:uppercase; letter-spacing:.08em; font-size:15px; color:#ffce2e;">Vrijeme otvaranja</h3>
+        <div style="line-height:1.9; font-size:15px; color:#d9d2c4;">Pon – Sub: 10:00 – 23:00<br>Nedjelja: 11:00 – 22:00</div>
+        <p style="font-size:14px; color:#9c968a;">Gotovina ili kartica</p>
+      </div>
+      <div style="display:flex; flex-direction:column; gap:14px;">
+        <h3 style="font-family:'Archivo',sans-serif; font-weight:800; text-transform:uppercase; letter-spacing:.08em; font-size:15px; color:#ffce2e;">Pratite nas</h3>
+        <div style="display:flex; gap:16px;">
+          <a href="https://www.facebook.com/krumpirco" style="color:#f6efe1;">Facebook</a>
+          <a href="https://www.instagram.com/krumpirco/" style="color:#f6efe1;">Instagram</a>
+        </div>
+        <a class="btn-red" href="https://www.krumpirco.com/restauracje" style="display:inline-block; width:fit-content; color:#fff; padding:12px 26px;">Naručite online</a>
+        <div style="display:flex; gap:10px; margin-top:6px;">
+          <a href="https://play.google.com/store/apps/details?id=com.restaumatic.krumpir_co_production"><img src="images/img8.png" alt="Preuzmi s Google Play" style="height:44px;"></a>
+          <a href="https://itunes.apple.com/app/id6778709736"><img src="images/img9.png" alt="Preuzmi na App Store" style="height:44px;"></a>
+        </div>
+      </div>
+    </div>
+    <div style="border-top:1px solid #3d382f; padding:20px clamp(20px,5vw,64px); font-size:13px; color:#9c968a; display:flex; flex-wrap:wrap; gap:8px 18px;">
+      <a href="https://www.krumpirco.com/terms" style="color:#9c968a;">Uvjeti korištenja</a>
+      <a href="https://www.krumpirco.com/privacy-policy" style="color:#9c968a;">Politika privatnosti</a>
+      <a href="https://www.krumpirco.com/zgody-marketingowe" style="color:#9c968a;">Marketinške suglasnosti</a>
+      <a href="https://www.krumpirco.com/accessibility-statement" style="color:#9c968a;">Izjava o pristupačnosti</a>
+    </div>
+  </footer>
+
+</div>
+</body>
+</html>
