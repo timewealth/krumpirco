@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="hr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Meni — Krumpir&Co | Domaći punjeni krumpiri</title>
+<meta name="description" content="Meni Krumpir&Co: punjeni krumpiri (Spuds) i pića. Pogledaj ponudu, složi narudžbu i pošalji na WhatsApp, e-mail ili nazovi.">
+<link rel="icon" href="images/logo.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,700;12..96,800&family=Instrument+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root { --cream:#F7F1E3; --ink:#1C1815; --terra:#C4502E; --terra-dark:#B04525; --amber:#E0982E; --muted:#4A423B; --sand:#EFE6D0; }
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body { margin: 0; font-family: 'Instrument Sans', system-ui, sans-serif; background: var(--cream); color: var(--ink); overflow-x: hidden; }
+  a { color: var(--terra); text-decoration: none; }
+  a:hover { color: var(--terra-dark); }
+  img { display: block; }
+  h1,h2,h3,h4 { font-family: 'Bricolage Grotesque', sans-serif; letter-spacing: -0.02em; }
+  button { font-family: inherit; }
+  .wrap { max-width: 1100px; margin: 0 auto; }
+  .btn-primary { background: var(--terra); color:#fff; font-weight:600; padding:11px 20px; border-radius:999px; display:inline-block; border:none; cursor:pointer; box-shadow:0 6px 18px rgba(196,80,46,0.28); transition:background .15s; }
+  .btn-primary:hover { background: var(--terra-dark); color:#fff; }
+  .btn-amber { background: var(--amber); color: var(--ink); font-weight:700; border-radius:999px; display:inline-block; border:none; cursor:pointer; }
+
+  header { position: sticky; top: 0; z-index: 50; background: rgba(247,241,227,0.92); backdrop-filter: blur(10px); border-bottom: 1px solid rgba(28,24,21,0.08); }
+  header .bar { padding: 14px 22px; display: flex; align-items: center; justify-content: space-between; gap: 16px; max-width: 1200px; margin: 0 auto; }
+  .logo img { height: 46px; }
+  .nav-links { display: none; align-items: center; gap: 28px; }
+  .nav-links a { color: var(--ink); font-weight: 500; font-size: 15px; }
+  @media (min-width: 900px) { .nav-links { display: flex; } }
+
+  .mhero { background: var(--ink); color: var(--cream); padding: 48px 22px 40px; }
+  .mhero .wrap { max-width: 1100px; }
+  .mhero .back { color: rgba(247,241,227,0.7); font-size: 14px; font-weight: 500; }
+  .mhero h1 { font-weight: 800; font-size: clamp(34px,6vw,56px); line-height: 1.02; margin: 14px 0 14px; }
+  .mhero p { color: rgba(247,241,227,0.8); font-size: 17px; line-height: 1.6; max-width: 60ch; margin: 0; }
+
+  .catnav { position: sticky; top: 74px; z-index: 40; background: rgba(247,241,227,0.95); backdrop-filter: blur(8px); border-bottom: 1px solid rgba(28,24,21,0.08); padding: 12px 22px; }
+  .catnav .inner { max-width: 1100px; margin: 0 auto; display: flex; gap: 10px; flex-wrap: wrap; }
+  .catnav a { border: 1px solid rgba(28,24,21,0.15); border-radius: 999px; padding: 8px 16px; font-size: 14px; font-weight: 600; color: var(--ink); }
+  .catnav a:hover { background: var(--ink); color: var(--cream); }
+
+  .cat { padding: 44px 22px 0; }
+  .cat:last-of-type { padding-bottom: 40px; }
+  .cat h2 { font-weight: 800; font-size: clamp(24px,4vw,36px); margin: 0 0 6px; }
+  .cat .sub { color: var(--muted); font-size: 15px; margin: 0 0 26px; }
+  .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px,1fr)); gap: 20px; }
+
+  .item { background: #fff; border: 1px solid rgba(28,24,21,0.08); border-radius: 18px; overflow: hidden; display: flex; flex-direction: column; box-shadow: 0 6px 20px rgba(28,24,21,0.05); }
+  .item .ph { height: 190px; background-size: cover; background-position: center; }
+  .item .bd { padding: 20px; display: flex; flex-direction: column; flex: 1; }
+  .item h3 { font-weight: 700; font-size: 20px; margin: 0 0 8px; }
+  .item .desc { color: var(--muted); font-size: 14px; line-height: 1.55; margin: 0 0 18px; }
+  .item .foot { margin-top: auto; display: flex; align-items: center; justify-content: space-between; gap: 12px; }
+  .item .price { font-family: 'Bricolage Grotesque',sans-serif; font-weight: 800; font-size: 22px; }
+  .item .add { background: var(--terra); color:#fff; border:none; cursor:pointer; font-weight:600; font-size:15px; padding:10px 18px; border-radius:999px; }
+  .item .add:hover { background: var(--terra-dark); }
+
+  /* Kompaktne stavke (pića) */
+  .drinks { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px,1fr)); gap: 12px; }
+  .drink { display: flex; align-items: center; justify-content: space-between; gap: 12px; background:#fff; border:1px solid rgba(28,24,21,0.08); border-radius: 14px; padding: 14px 16px; }
+  .drink .n { font-weight: 600; font-size: 15px; }
+  .drink .r { display: flex; align-items: center; gap: 12px; }
+  .drink .p { font-family:'Bricolage Grotesque',sans-serif; font-weight: 800; font-size: 16px; white-space: nowrap; }
+  .drink .add { background: var(--ink); color:#fff; border:none; cursor:pointer; font-weight:600; font-size:20px; width:34px; height:34px; border-radius:999px; line-height:1; }
+
+  .allerg { max-width: 1100px; margin: 8px auto 0; padding: 0 22px 60px; }
+  .allerg .box { background: var(--sand); border-radius: 14px; padding: 20px 22px; color: var(--muted); font-size: 13px; line-height: 1.7; }
+
+  footer { background: #141110; color: rgba(247,241,227,0.7); padding: 40px 22px 30px; }
+  footer .cols { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px,1fr)); gap: 28px; max-width: 1100px; margin: 0 auto; padding-bottom: 26px; border-bottom: 1px solid rgba(247,241,227,0.12); }
+  footer h4 { color: var(--cream); font-size: 14px; font-weight: 600; margin: 0 0 12px; text-transform: uppercase; letter-spacing: 0.08em; font-family: 'Instrument Sans',sans-serif; }
+  footer p { margin: 0 0 6px; font-size: 14px; }
+  footer .copy { max-width: 1100px; margin: 20px auto 0; font-size: 13px; color: rgba(247,241,227,0.45); }
+
+  /* Košarica / blagajna */
+  .cart-fab { position: fixed; right: 20px; bottom: 20px; z-index: 55; background: var(--terra); color:#fff; border:none; cursor:pointer; border-radius:999px; padding:15px 22px; font-weight:700; font-size:16px; display:flex; align-items:center; gap:10px; box-shadow:0 10px 30px rgba(196,80,46,0.45); transition: transform .15s; }
+  .cart-fab .count { background: var(--amber); color: var(--ink); border-radius:999px; min-width:24px; height:24px; padding:0 7px; display:inline-flex; align-items:center; justify-content:center; font-size:13px; }
+  .cart-fab[data-empty="1"] { display: none; }
+  .overlay { position: fixed; inset: 0; z-index: 80; background: rgba(20,17,16,0.55); display: none; justify-content: flex-end; }
+  .overlay.open { display: flex; }
+  .panel { background: var(--cream); width: 100%; max-width: 460px; height: 100%; display: flex; flex-direction: column; box-shadow: -20px 0 60px rgba(0,0,0,0.3); }
+  .panel .phead { padding: 20px 22px; display: flex; align-items: center; justify-content: space-between; border-bottom: 1px solid rgba(28,24,21,0.1); }
+  .panel .phead h3 { margin: 0; font-size: 22px; font-weight: 800; }
+  .panel .pclose { background: none; border: none; font-size: 28px; cursor: pointer; color: var(--ink); line-height: 1; }
+  .panel .pbody { flex: 1; overflow-y: auto; padding: 20px 22px; }
+  .panel .pfoot { padding: 18px 22px 24px; border-top: 1px solid rgba(28,24,21,0.1); }
+  .citem { display: flex; gap: 14px; padding: 14px 0; border-bottom: 1px solid rgba(28,24,21,0.08); }
+  .citem .info { flex: 1; }
+  .citem .info h4 { margin: 0 0 4px; font-size: 15px; font-weight: 700; font-family:'Instrument Sans',sans-serif; }
+  .citem .info .up { color: var(--muted); font-size: 13px; }
+  .qty { display: inline-flex; align-items: center; border: 1px solid rgba(28,24,21,0.18); border-radius: 999px; overflow: hidden; margin-top: 8px; }
+  .qty button { width: 30px; height: 30px; border: none; background: none; cursor: pointer; font-size: 18px; color: var(--ink); }
+  .qty span { min-width: 26px; text-align: center; font-weight: 600; font-size: 15px; }
+  .citem .line { text-align: right; font-weight: 700; }
+  .citem .rm { background: none; border: none; color: var(--muted); font-size: 12px; cursor: pointer; margin-top: 6px; text-decoration: underline; }
+  .cart-empty { text-align: center; color: var(--muted); padding: 40px 0; }
+  .field { margin-bottom: 14px; }
+  .field label { display: block; font-size: 13px; font-weight: 600; margin-bottom: 6px; }
+  .field input { width: 100%; padding: 12px 14px; border: 1px solid rgba(28,24,21,0.18); border-radius: 12px; font-family: inherit; font-size: 15px; background: #fff; }
+  .field input:focus { outline: 2px solid var(--terra); border-color: transparent; }
+  .seg { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 16px; }
+  .seg .opt { border: 1.5px solid rgba(28,24,21,0.15); border-radius: 12px; padding: 13px; text-align: center; cursor: pointer; font-weight: 600; font-size: 15px; background: #fff; }
+  .seg .opt.sel { border-color: var(--terra); background: rgba(196,80,46,0.08); color: var(--terra-dark); }
+  .row2 { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+  .sumrow { display: flex; justify-content: space-between; font-size: 15px; color: var(--muted); margin-bottom: 6px; }
+  .sumrow.total { font-size: 20px; font-weight: 800; color: var(--ink); font-family:'Bricolage Grotesque',sans-serif; margin-top: 8px; padding-top: 10px; border-top: 1px solid rgba(28,24,21,0.12); }
+  .cta-full { width: 100%; text-align: center; font-size: 17px; padding: 15px; margin-top: 6px; display:block; }
+  .note { font-size: 12px; color: var(--muted); text-align: center; margin: 10px 0 0; line-height: 1.5; }
+  .err { color: #B02A1E; font-size: 13px; margin: 0 0 12px; display: none; }
+  .err.show { display: block; }
+  .confirm-box { text-align: center; padding: 10px 0; }
+  .confirm-box .big { font-size: 48px; }
+  .confirm-box h3 { font-size: 23px; margin: 10px 0 6px; }
+  .confirm-box p { color: var(--muted); font-size: 15px; line-height: 1.6; margin: 0 0 14px; }
+  .send-list { display: flex; flex-direction: column; gap: 10px; margin-top: 4px; }
+  .send-btn { display:flex; align-items:center; gap:12px; justify-content:center; width:100%; padding:15px; border-radius:999px; font-weight:700; font-size:16px; cursor:pointer; border:none; text-decoration:none; }
+  .send-wa { background:#25D366; color:#0a3d1f; }
+  .send-mail { background: var(--amber); color: var(--ink); }
+  .send-call { background: var(--ink); color: var(--cream); }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="bar">
+    <a href="index.html" class="logo"><img src="images/logo.png" alt="Krumpir&Co logo"></a>
+    <nav class="nav-links">
+      <a href="index.html">Početak</a>
+      <a href="menu.html">Meni</a>
+      <a href="index.html#o-nama">Tko smo mi</a>
+      <a href="index.html#kako">Kako naručiti</a>
+      <a href="index.html#kontakt">Kontakt</a>
+    </nav>
+    <button class="btn-primary" onclick="openCart()">🧺 Košarica</button>
+  </div>
+</header>
+
+<section class="mhero">
+  <div class="wrap">
+    <a href="index.html" class="back">← Natrag na početnu</a>
+    <h1>Naš meni</h1>
+    <p>Temelj svih jela je međimurski krumpir — pečen cijeli u kori, začinjen i pomiješan s maslacem te miksom mozzarelle i cheddara, pa punjen nadjevima po želji. Dodaj u košaricu, a narudžbu pošalji na WhatsApp, e-mail ili nas nazovi.</p>
+  </div>
+</section>
+
+<nav class="catnav">
+  <div class="inner">
+    <a href="#spuds">Punjeni krumpiri (Spuds)</a>
+    <a href="#pica">Pića</a>
+  </div>
+</nav>
+
+<section class="cat" id="spuds">
+  <div class="wrap">
+    <h2>Punjeni krumpiri (Spuds)</h2>
+    <p class="sub">Hrskavo izvana, savršeno iznutra.</p>
+    <div class="grid" id="spuds-grid"></div>
+  </div>
+</section>
+
+<section class="cat" id="pica">
+  <div class="wrap">
+    <h2>Pića</h2>
+    <p class="sub">Za osvježenje uz krumpir.</p>
+    <div class="drinks" id="pica-grid"></div>
+  </div>
+</section>
+
+<div class="allerg">
+  <div class="box">
+    <b style="color:var(--ink);">Označavanje alergena:</b> 1. Gluten · 2. Rakovi · 3. Jaja · 4. Riba · 5. Kikiriki · 6. Soja · 7. Mlijeko / laktoza · 8. Orašasti plodovi · 9. Celer · 10. Senf · 11. Sezam · 12. Sumpor dioksid · 13. Lupin · 14. Mekušci. Za detalje o alergenima u pojedinom jelu slobodno nas kontaktirajte.
+  </div>
+</div>
+
+<footer>
+  <div class="cols">
+    <div>
+      <img src="images/logo.png" alt="Krumpir&Co logo" style="height:40px; margin-bottom:12px;">
+      <p>Domaći punjeni krumpiri. Sve sami radimo i kuhamo.</p>
+    </div>
+    <div>
+      <h4>Kontakt</h4>
+      <p>Krapinska 7, 10000 Zagreb</p>
+      <p><a href="tel:+385955368390">+385 95 536 8390</a></p>
+      <p><a href="mailto:krumpirco@gmail.com">krumpirco@gmail.com</a></p>
+    </div>
+    <div>
+      <h4>Radno vrijeme</h4>
+      <p>Pon – Sub: 10:00 – 23:00</p>
+      <p>Nedjelja: 11:00 – 22:00</p>
+    </div>
+    <div>
+      <h4>Pratite nas</h4>
+      <p><a href="https://www.facebook.com/krumpirco" target="_blank" rel="noopener">Facebook</a></p>
+      <p><a href="https://www.instagram.com/krumpirco/" target="_blank" rel="noopener">Instagram</a></p>
+    </div>
+  </div>
+  <p class="copy">© 2026 Krumpir&Co, Zagreb. Sva prava pridržana.</p>
+</footer>
+
+<button class="cart-fab" id="cartFab" data-empty="1" onclick="openCart()">🧺 Košarica <span class="count" id="fabCount">0</span></button>
+
+<div class="overlay" id="overlay" onclick="if(event.target===this) closeCart()">
+  <div class="panel" role="dialog" aria-label="Košarica">
+    <div class="phead">
+      <h3 id="panelTitle">Vaša košarica</h3>
+      <button class="pclose" aria-label="Zatvori" onclick="closeCart()">×</button>
+    </div>
+    <div id="viewCart" style="display:contents;">
+      <div class="pbody" id="cartBody"></div>
+      <div class="pfoot" id="cartFoot"></div>
+    </div>
+    <div id="viewCheckout" style="display:none; flex:1; flex-direction:column; overflow:hidden;">
+      <div class="pbody">
+        <p class="err" id="ckErr">Molimo ispunite obavezna polja (*).</p>
+        <label style="display:block; font-size:13px; font-weight:600; margin-bottom:6px;">Način preuzimanja</label>
+        <div class="seg">
+          <div class="opt sel" id="opt-dostava" onclick="setMethod('dostava')">🛵 Dostava</div>
+          <div class="opt" id="opt-preuzimanje" onclick="setMethod('preuzimanje')">🏪 Preuzimanje</div>
+        </div>
+        <div id="addrBlock">
+          <div class="field"><label>Adresa dostave *</label><input id="f-adresa" placeholder="Ulica i kućni broj"></div>
+          <div class="row2">
+            <div class="field"><label>Grad</label><input id="f-grad" value="Zagreb"></div>
+            <div class="field"><label>Kat / napomena</label><input id="f-napomena" placeholder="npr. 2. kat"></div>
+          </div>
+        </div>
+        <div class="row2">
+          <div class="field"><label>Ime i prezime *</label><input id="f-ime" placeholder="Vaše ime"></div>
+          <div class="field"><label>Telefon *</label><input id="f-tel" placeholder="09x xxx xxxx" inputmode="tel"></div>
+        </div>
+        <label style="display:block; font-size:13px; font-weight:600; margin:6px 0 6px;">Način plaćanja</label>
+        <div class="seg">
+          <div class="opt sel" id="pay-kartica" onclick="setPay('kartica')">💳 Kartica pri preuzimanju</div>
+          <div class="opt" id="pay-gotovina" onclick="setPay('gotovina')">💵 Gotovina</div>
+        </div>
+      </div>
+      <div class="pfoot" id="ckFoot"></div>
+    </div>
+    <div id="viewDone" style="display:none; flex:1; flex-direction:column; overflow:auto;">
+      <div class="pbody">
+        <div class="confirm-box">
+          <div class="big">🥔</div>
+          <h3>Vaša narudžba je spremna</h3>
+          <p>Pošaljite je na jedan od načina — javit ćemo se za potvrdu i vrijeme.</p>
+          <div class="send-list">
+            <a id="waLink" class="send-btn send-wa" target="_blank" rel="noopener">💬 Pošalji na WhatsApp</a>
+            <a id="mailLink" class="send-btn send-mail">✉️ Pošalji e-mailom</a>
+            <a href="tel:+385955368390" class="send-btn send-call">📞 Nazovi +385 95 536 8390</a>
+          </div>
+          <p class="note">Plaćanje karticom ili gotovinom pri dostavi / preuzimanju.</p>
+          <button class="btn-amber cta-full" style="margin-top:14px;" onclick="resetOrder()">Nova narudžba</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+/* ====== MENI (pravi artikli i cijene) ======
+   Cijene i opise mijenjajte ovdje. */
+const SPUDS = [
+  { id:"beans",   name:"Beans classic",       price:9.00,  img:"images/menu/beans.avif",   desc:"Pečeni krumpir, maslac, miks mozzarella & cheddar, domaći grah, Krumpirko umak (jogurt, majoneza, začini), hrskavi luk, vlasac." },
+  { id:"chilli",  name:"Chilli con carne",    price:11.00, img:"images/menu/chilli.avif",  desc:"Pečeni krumpir, maslac, miks mozzarella & cheddar, domaći chilli con carne, Krumpirko umak, hrskavi luk, vlasac, chilli." },
+  { id:"beef",    name:"Pulled BBQ beef",     price:13.00, img:"images/menu/beef.avif",    desc:"Pečeni krumpir, maslac, miks mozzarella & cheddar, sporo pečena govedina u BBQ umaku, Krumpirko umak, hrskavi luk, vlasac." },
+  { id:"pork",    name:"Pulled BBQ pork",     price:11.00, img:"images/menu/pork.avif",    desc:"Pečeni krumpir, maslac, miks mozzarella & cheddar, sporo pečena svinjetina u BBQ umaku, Krumpirko umak, hrskavi luk, vlasac." },
+  { id:"chicken", name:"Pulled juicy chicken",price:11.00, img:"images/menu/chicken.avif", desc:"Pečeni krumpir, maslac, miks mozzarella & cheddar, sporo pečena marinirana piletina, Krumpirko umak, hrskavi luk, vlasac." },
+  { id:"tzatziki",name:"Tzatziki salata",     price:3.00,  img:"images/menu/tzatziki.png", desc:"Osvježavajući dodatak uz krumpir." },
+];
+const PICA = [
+  { id:"cola",      name:"Coca-Cola 0,5 l",             price:2.50 },
+  { id:"cola-zero", name:"Coca-Cola Zero Sugar 0,5 l",  price:2.50 },
+  { id:"fanta",     name:"Fanta orange 0,5 l",          price:2.50 },
+  { id:"sensation", name:"Jamnica sensation limeta & kiwano 0,5 l", price:2.50 },
+  { id:"caj",       name:"Jana ledeni čaj breskva 0,5 l", price:2.50 },
+  { id:"multi",     name:"Juicy Fruits Multivitamin 0,5 l", price:2.50 },
+  { id:"cetina",    name:"Cetina izvorska voda 0,5 l",  price:2.00 },
+  { id:"jamnica",   name:"Jamnica gazirana voda 0,5 l", price:2.00 },
+];
+const ALL = [...SPUDS, ...PICA];
+const DELIVERY_FEE = 2.50;       // trošak dostave (€), 0 = besplatno
+const FREE_OVER = 20;            // besplatna dostava iznad ovog iznosa (€)
+const WHATSAPP = "385955368390"; // WhatsApp broj (bez +)
+const EMAIL = "krumpirco@gmail.com";
+
+let cart = JSON.parse(localStorage.getItem("kc_cart") || "{}");
+let method = "dostava", pay = "kartica";
+const eur = n => n.toFixed(2).replace(".", ",") + " €";
+const save = () => localStorage.setItem("kc_cart", JSON.stringify(cart));
+const prod = id => ALL.find(p => p.id === id);
+
+function renderMenu() {
+  document.getElementById("spuds-grid").innerHTML = SPUDS.map(p => `
+    <div class="item">
+      <div class="ph" style="background-image:url('${p.img}');"></div>
+      <div class="bd">
+        <h3>${p.name}</h3>
+        <p class="desc">${p.desc}</p>
+        <div class="foot"><span class="price">${eur(p.price)}</span><button class="add" onclick="addToCart('${p.id}')">Dodaj +</button></div>
+      </div>
+    </div>`).join("");
+  document.getElementById("pica-grid").innerHTML = PICA.map(p => `
+    <div class="drink"><span class="n">${p.name}</span><span class="r"><span class="p">${eur(p.price)}</span><button class="add" onclick="addToCart('${p.id}')" aria-label="Dodaj">+</button></span></div>`).join("");
+}
+
+function totalItems(){ return Object.values(cart).reduce((a,b)=>a+b,0); }
+function subtotal(){ return Object.entries(cart).reduce((s,[id,q])=>s+prod(id).price*q,0); }
+function deliveryFee(){ return (method==="dostava" && subtotal()<FREE_OVER) ? DELIVERY_FEE : 0; }
+function updateFab(){ const n=totalItems(); document.getElementById("fabCount").textContent=n; document.getElementById("cartFab").setAttribute("data-empty", n===0?"1":"0"); }
+
+function addToCart(id){ cart[id]=(cart[id]||0)+1; save(); updateFab(); renderCart(); const f=document.getElementById("cartFab"); f.style.transform="scale(1.08)"; setTimeout(()=>f.style.transform="",150); }
+function setQty(id,d){ cart[id]=(cart[id]||0)+d; if(cart[id]<=0) delete cart[id]; save(); updateFab(); renderCart(); }
+function removeItem(id){ delete cart[id]; save(); updateFab(); renderCart(); }
+
+function renderCart(){
+  const body=document.getElementById("cartBody"), foot=document.getElementById("cartFoot"), ids=Object.keys(cart);
+  if(ids.length===0){
+    body.innerHTML=`<div class="cart-empty"><div style="font-size:44px;">🧺</div><p>Košarica je prazna.<br>Dodajte nešto iz menija.</p></div>`;
+    foot.innerHTML=`<button class="btn-primary cta-full" onclick="closeCart()">Natrag na meni</button>`; return;
+  }
+  body.innerHTML=ids.map(id=>{ const p=prod(id), q=cart[id];
+    return `<div class="citem"><div class="info"><h4>${p.name}</h4><div class="up">${eur(p.price)}</div>
+      <div class="qty"><button onclick="setQty('${id}',-1)">−</button><span>${q}</span><button onclick="setQty('${id}',1)">+</button></div></div>
+      <div style="display:flex; flex-direction:column; align-items:flex-end;"><div class="line">${eur(p.price*q)}</div><button class="rm" onclick="removeItem('${id}')">Ukloni</button></div></div>`; }).join("");
+  foot.innerHTML=`<div class="sumrow total"><span>Ukupno</span><span>${eur(subtotal())}</span></div><button class="btn-primary cta-full" onclick="showCheckout()">Nastavi na narudžbu →</button>`;
+}
+
+function setMethod(m){ method=m; document.getElementById("opt-dostava").classList.toggle("sel",m==="dostava"); document.getElementById("opt-preuzimanje").classList.toggle("sel",m==="preuzimanje"); document.getElementById("addrBlock").style.display=m==="dostava"?"block":"none"; renderCheckoutFoot(); }
+function setPay(p){ pay=p; document.getElementById("pay-kartica").classList.toggle("sel",p==="kartica"); document.getElementById("pay-gotovina").classList.toggle("sel",p==="gotovina"); }
+function renderCheckoutFoot(){
+  const fee=deliveryFee(), total=subtotal()+fee;
+  const feeLabel = method==="preuzimanje" ? "—" : (fee===0?"Besplatno":eur(fee));
+  document.getElementById("ckFoot").innerHTML=`
+    <div class="sumrow"><span>Međuzbroj</span><span>${eur(subtotal())}</span></div>
+    <div class="sumrow"><span>Dostava</span><span>${feeLabel}</span></div>
+    <div class="sumrow total"><span>Za platiti</span><span>${eur(total)}</span></div>
+    <button class="btn-primary cta-full" onclick="placeOrder()">Pošalji narudžbu →</button>
+    <p class="note">Odaberite WhatsApp, e-mail ili poziv na sljedećem koraku.</p>`;
+}
+function showCheckout(){ document.getElementById("viewCart").style.display="none"; document.getElementById("viewCheckout").style.display="flex"; document.getElementById("panelTitle").textContent="Podaci za narudžbu"; renderCheckoutFoot(); }
+
+function buildMessage(){
+  const ime=document.getElementById("f-ime").value.trim(), tel=document.getElementById("f-tel").value.trim();
+  const adresa=document.getElementById("f-adresa").value.trim(), grad=document.getElementById("f-grad").value.trim(), nap=document.getElementById("f-napomena").value.trim();
+  const fee=deliveryFee(), total=subtotal()+fee;
+  let m="NOVA NARUDŽBA — Krumpir&Co\\n\\n";
+  Object.entries(cart).forEach(([id,q])=>{ const p=prod(id); m+="• "+q+"× "+p.name+" — "+eur(p.price*q)+"\\n"; });
+  m+="\\nMeđuzbroj: "+eur(subtotal())+"\\n";
+  m+=method==="dostava" ? ("Dostava: "+(fee===0?"Besplatno":eur(fee))+"\\n") : "Preuzimanje u lokalu\\n";
+  m+="UKUPNO: "+eur(total)+"\\n\\n";
+  m+="Način: "+(method==="dostava"?"Dostava":"Preuzimanje")+"\\n";
+  m+="Plaćanje: "+(pay==="kartica"?"Kartica pri preuzimanju/dostavi":"Gotovina")+"\\n";
+  m+="Ime: "+ime+"\\nTelefon: "+tel+"\\n";
+  if(method==="dostava"){ m+="Adresa: "+adresa+", "+grad+"\\n"; if(nap) m+="Napomena: "+nap+"\\n"; }
+  return m;
+}
+function placeOrder(){
+  const ime=document.getElementById("f-ime").value.trim(), tel=document.getElementById("f-tel").value.trim(), adresa=document.getElementById("f-adresa").value.trim();
+  const err=document.getElementById("ckErr");
+  if(!ime||!tel||(method==="dostava"&&!adresa)){ err.classList.add("show"); return; }
+  err.classList.remove("show");
+  const msg=buildMessage();
+  document.getElementById("waLink").href="https://wa.me/"+WHATSAPP+"?text="+encodeURIComponent(msg);
+  document.getElementById("mailLink").href="mailto:"+EMAIL+"?subject="+encodeURIComponent("Narudžba — Krumpir&Co")+"&body="+encodeURIComponent(msg);
+  document.getElementById("viewCheckout").style.display="none";
+  document.getElementById("viewDone").style.display="flex";
+  document.getElementById("panelTitle").textContent="Pošalji narudžbu";
+}
+function resetOrder(){ cart={}; save(); updateFab(); document.getElementById("viewDone").style.display="none"; document.getElementById("viewCart").style.display="contents"; document.getElementById("panelTitle").textContent="Vaša košarica"; renderCart(); closeCart(); }
+
+function openCart(){ document.getElementById("viewCheckout").style.display="none"; document.getElementById("viewDone").style.display="none"; document.getElementById("viewCart").style.display="contents"; document.getElementById("panelTitle").textContent="Vaša košarica"; renderCart(); document.getElementById("overlay").classList.add("open"); document.body.style.overflow="hidden"; }
+function closeCart(){ document.getElementById("overlay").classList.remove("open"); document.body.style.overflow=""; }
+
+renderMenu(); updateFab();
+</script>
+</body>
+</html>
